@@ -1,6 +1,8 @@
 package miu.controllers;
 
 import miu.Utility;
+import miu.models.Passenger;
+import miu.models.Reservation;
 
 public class PassengerController {
     public void createReservation(){
