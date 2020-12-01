@@ -1,0 +1,17 @@
+@startuml
+
+->AgentController: confirmAndPurchaseReservation(reservation: Reservation)
+
+AgentController -> Reservation: Confirm a reservation
+activate Reservation
+deactivate Reservation
+
+Reservation -> Reservation: Purchase
+activate Reservation
+deactivate Reservation
+
+Reservation -> Ticket: Export Tickets.
+activate Ticket
+deactivate Ticket
+
+@enduml
