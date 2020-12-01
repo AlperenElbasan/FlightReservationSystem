@@ -1,6 +1,6 @@
 package controllers;
 
-public class Admin {
+public class AdminController {
     private int name;
 
     public int getName() {
@@ -10,9 +10,5 @@ public class Admin {
     public void setName(int name) {
         this.name = name;
     }
-
-
-
-
 
 }
