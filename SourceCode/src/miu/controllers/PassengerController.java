@@ -38,7 +38,7 @@ public class PassengerController {
 
     public static Reservation makeReservation(List<FlightInstance> flightInstances) {
         Scanner Input = new Scanner(System.in);  // Create a Scanner object
-        Reservation reservation = new Reservation(null);
+        Reservation reservation = new Reservation();
         for(FlightInstance flightInstance: flightInstances){
             Ticket reservationTicket =
                     new Ticket(StorageHandler.randomNumber(), StorageHandler.randomNumber(), flightInstance);

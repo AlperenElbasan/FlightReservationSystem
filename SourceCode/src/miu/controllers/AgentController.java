@@ -15,7 +15,7 @@ public class AgentController {
 	}
 
 	public static void makeReservation(Agent agent, List<FlightInstance> flightInstances) {
-        Reservation reservation = new Reservation(agent.getUuid(),null);
+        Reservation reservation = new Reservation(agent.getUuid());
         for (FlightInstance f: flightInstances) {
             Ticket t = new Ticket(
                     StorageHandler.randomTicketNumber(),

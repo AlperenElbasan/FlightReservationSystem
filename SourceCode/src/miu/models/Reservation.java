@@ -29,6 +29,13 @@ public class Reservation {
 		tickets = new ArrayList<>();
 	}
 
+	public Reservation(List<Ticket> tickets) {
+		super();
+		this.uuid = UUID.randomUUID();
+		AgentId = null;
+		this.tickets = tickets;
+	}
+
 	public UUID getUuid() {
 		return uuid;
 	}
