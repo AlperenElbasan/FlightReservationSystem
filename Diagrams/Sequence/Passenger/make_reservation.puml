@@ -1,0 +1,11 @@
+@startuml
+
+Passenger -> Reservation: Make a reservation
+Reservation -> Ticket: Get ticket
+Ticket -> Flight: Get the flight
+Reservation -> Ticket: get Reservation code
+
+@enduml
+
+
+

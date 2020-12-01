@@ -1,0 +1,93 @@
+@startuml
+
+Class Airline {
+    UUID : long 
+    Code: String 
+    Name: String
+    History: String 
+}
+
+Class Airport{
+    UUID : long
+    Code : String
+    Name : String
+    Address : Address
+}
+
+Class Address{
+    UUID : long
+    Street : String
+    City : String
+    State : String
+    Zip : int 
+}
+
+Class Flight{
+    UUID : long
+    Number : int
+    Capacity : int
+    AirlineOwn : Airline
+    DepartAirport : Airport
+    ArrivalAirport : Airport
+    DepartTime : DateTime
+    ArrivalTime : DateTime
+}
+
+Class FlightInstance{
+    UUID : long
+    flightDate: Date
+    passengers: List<Passenger>
+    crews: List<String>
+    pilots: List<String>
+    Date getFlightDate()
+    DateTime getDepartTime()
+    DateTime getArrivalTime()
+}
+
+'  It has an id, date, list of passengers, list of crew (flight staff), list of pilots (usually there are at least two or more)
+
+Class Passenger {
+    UUID : long
+    firstName : String
+    lastName : String 
+    birthDate : Date
+    email : String
+    residenceAddress : Address
+}
+
+Class Reservation {
+    UUID : Long
+    AgentId: int
+    void setAgentId(int agentId)
+    int getAgentId(): int
+}
+
+Class Agent {
+    UUID : long
+    passengers: List<Passenger>
+}
+
+Class Ticket {
+    UUID : long
+    Number : BigInteger 
+    reservationCode : Srting
+    flightInstance : FlightInstance
+}
+
+Airport "1" *-- "1" Address
+Flight "0..*" --* "1" Airline
+Flight ^-- FlightInstance
+Passenger "1" *-- "1" Address
+
+Reservation "0..1" --- "1" Passenger
+Flight "0..*" --- "1..*" Passenger
+Ticket "1..*" --- "1" Reservation
+
+Ticket "1..*" --- "1" FlightInstance
+
+Agent "0..*" --- "1..*" Passenger
+Reservation "0..1" --- "0..1" Agent
+
+FlightInstance "1..*" --- "0..*" Passenger
+
+@enduml
