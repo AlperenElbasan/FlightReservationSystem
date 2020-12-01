@@ -1,0 +1,4 @@
+@startuml
+Agent -> Reservation : getDetail()
+Reservation -> Ticket : getDetail()
+@enduml

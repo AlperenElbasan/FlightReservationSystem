@@ -1,0 +1,10 @@
+@startuml
+
+Passenger -> SystemHelper : getFlights(Dapart, Arrival, Date)
+SystemHelper -> FlightInstance : getAllDeparturesOnDate(Date)
+FlightInstance -> Address : getAirportName
+SystemHelper -> FlightInstance : getAllArrivalOnDate(Date)
+FlightInstance -> Address : getAirportName
+SystemHelper -> FlightInstance : compareAndGet(Depart, Arrival, allDeparts, allArrivals)
+
+@enduml

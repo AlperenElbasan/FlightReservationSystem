@@ -1,0 +1,3 @@
+@startuml
+Passenger -> Passenger: getReservations()
+@enduml

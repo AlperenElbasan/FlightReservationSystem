@@ -1,0 +1,4 @@
+@startuml
+Agent -> Passenger: getReservationDoneByAgent()
+Passenger -> Passenger: getReservations()
+@enduml
