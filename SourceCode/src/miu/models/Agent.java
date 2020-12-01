@@ -1,5 +1,7 @@
 package miu.models;
 
+import miu.StorageHandler;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -21,6 +23,4 @@ public class Agent {
 	public void addPassenger(Passenger passenger) {
 		passengers.add(passenger);
 	}
-
-
 }

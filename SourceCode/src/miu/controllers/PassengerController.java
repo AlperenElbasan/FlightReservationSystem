@@ -8,9 +8,10 @@ import miu.models.FlightInstance;
 import miu.models.Passenger;
 import miu.models.Reservation;
 
+import java.util.List;
+
 public class PassengerController {
     public void createReservation(){
-    	Reservation reservation = new Reservation(?);
     }
 
     public void cancelReservation(){
