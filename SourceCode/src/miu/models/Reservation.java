@@ -1,11 +1,14 @@
 package miu.models;
 
+import miu.constants.ReservationStatus;
+
 import java.util.*;
 
 public class Reservation {
 	private UUID uuid;
 	private UUID AgentId;
 	private List<Ticket> tickets;
+	private ReservationStatus status = ReservationStatus.NONE;
 
 	/*
 	*
@@ -48,5 +51,10 @@ public class Reservation {
 
 	public List<Ticket> getTickets() {
 		return tickets;
+	}
+
+	public void cancel(){
+		this.status = ReservationStatus.CANCEL;
+		tickets.clear();
 	}
 }

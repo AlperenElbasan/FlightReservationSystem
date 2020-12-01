@@ -28,13 +28,19 @@ public class AgentController {
         StorageHandler.addReservation(reservation);
     }
 
+    public static void cancelReservation(Agent agent, Reservation reservation) {
+        reservation.cancel();
+    }
+    
     public static void main(String[] args) {
         Utility.ExampleOuput("AgentController Hello world");
         listAirports();
 
+        // Create agent
         Agent agent = new Agent();
         agent.addPassenger(StorageHandler.getRandomPassenger(1));
         agent.addPassenger(StorageHandler.getRandomPassenger(2));
+
         List<FlightInstance> flightInstances = StorageHandler.generateListFlightInstance(5);
         makeReservation(agent, flightInstances);
     }

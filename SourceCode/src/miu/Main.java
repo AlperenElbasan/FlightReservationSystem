@@ -18,16 +18,11 @@ public class Main extends Application {
     private static void initData() {
         //TODO: generate all data from storage here.
         System.out.println("initialize data");
+        StorageHandler.initializeData();
     }
 
     public static void main(String[] args) {
-//        For console first. Comment out launch here.
         initData();
-
-        System.out.println("Hello world");
-        Utility.ExampleOuput("Hello world");
-        launch(args);
-
-
+//        launch(args);
     }
 }

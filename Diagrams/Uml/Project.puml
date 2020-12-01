@@ -61,6 +61,7 @@ Class Reservation {
     void setAgentId(int agentId)
     int getAgentId(): int
     tickets: List<Ticket>
+    status: enum
 }
 
 Class Agent {
