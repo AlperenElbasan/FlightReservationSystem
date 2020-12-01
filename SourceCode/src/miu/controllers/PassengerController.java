@@ -3,10 +3,7 @@ package miu.controllers;
 import java.util.*;
 import miu.StorageHandler;
 import miu.Utility;
-import miu.models.Agent;
-import miu.models.FlightInstance;
-import miu.models.Passenger;
-import miu.models.Reservation;
+import miu.models.*;
 
 import java.util.*;
 
@@ -35,12 +32,12 @@ public class PassengerController {
     }
     
     public List<Reservation> getDetailsOfReservation(Reservation reservation) {
-    	
+    	return null;
     }
 
     public static void makeReservation(List<FlightInstance> flightInstances) {
         Scanner Input = new Scanner(System.in);  // Create a Scanner object
-        Reservation reservation = new Reservation(null);
+        Reservation reservation = new Reservation();
         for(FlightInstance flightInstance: flightInstances){
             Utility.viewFlightInstanceDetail(flightInstance);
         }
@@ -49,12 +46,10 @@ public class PassengerController {
 
     }
 
-
     public static void main(String[] args) {
-        //TODO: implement cases of passenger here.
-        Utility.ExampleOuput("Passenger Hello world");
         StorageHandler storageHandler = new StorageHandler();
         List<FlightInstance> FInstance = storageHandler.generateListFlightInstance(10);
+
         makeReservation(FInstance);
     }
 }
