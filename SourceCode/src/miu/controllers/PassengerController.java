@@ -31,25 +31,33 @@ public class PassengerController {
     	return passenger.getReservation();
     }
     
+
     public List<Reservation> getDetailsOfReservation(Reservation reservation) {
     	return null;
     }
 
-    public static void makeReservation(List<FlightInstance> flightInstances) {
+    public static Reservation makeReservation(List<FlightInstance> flightInstances) {
         Scanner Input = new Scanner(System.in);  // Create a Scanner object
-        Reservation reservation = new Reservation();
+        Reservation reservation = new Reservation(null);
         for(FlightInstance flightInstance: flightInstances){
-            Utility.viewFlightInstanceDetail(flightInstance);
+            Ticket reservationTicket =
+                    new Ticket(StorageHandler.randomNumber(), StorageHandler.randomNumber(), flightInstance);
+            reservation.addTicket(reservationTicket);
         }
-        System.out.println("Please select your flight");
-        int flightNumber = Input.nextInt();
+        return reservation;
+    }
+
+    public static void cancelReservation(Reservation reservation){
 
     }
 
-    public static void main(String[] args) {
-        StorageHandler storageHandler = new StorageHandler();
-        List<FlightInstance> FInstance = storageHandler.generateListFlightInstance(10);
 
-        makeReservation(FInstance);
+
+    public static void main(String[] args) {
+        //TODO: implement cases of passenger here.
+        Utility.ExampleOuput("Passenger Hello world");
+
+        List<FlightInstance> FInstance = StorageHandler.generateListFlightInstance(10);
+        Reservation reservation = makeReservation(FInstance);
     }
 }
