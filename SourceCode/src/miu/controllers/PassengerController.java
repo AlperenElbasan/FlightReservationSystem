@@ -52,11 +52,12 @@ public class PassengerController {
     }
 
     public static void confirmAndPurchase(Reservation reservation, boolean Status){
-        if(Status) reservation.confirmed();
-        else reservation.cancel();
+        if(Status){
+            reservation.confirmed();
+        } else {
+            reservation.cancel();
+        }
     }
-
-
 
     public static void main(String[] args) {
         //TODO: implement cases of passenger here.
