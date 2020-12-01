@@ -1,8 +1,16 @@
 @startuml
 
 Passenger -> Reservation: Make a reservation
+activate Reservation
+
 Reservation -> Ticket: Create a ticket
+activate Ticket
+
 Ticket -> FlightInstance: Get the flight instance
+deactivate Ticket
+activate FlightInstance
+
 Reservation -> Ticket: get Reservation code
+activate Ticket
 
 @enduml
