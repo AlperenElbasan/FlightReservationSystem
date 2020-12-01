@@ -9,7 +9,7 @@ import java.util.*;
 
 public class PassengerController {
     public void createReservation(Passenger passenger, List<Ticket> tickets){
-    	Reservation reservation = new Reservation(tickets);
+    	Reservation reservation = new Reservation();
     	passenger.addReservation(reservation);
     	
     	System.out.println("added reservation to passenger...");
@@ -41,14 +41,19 @@ public class PassengerController {
         Reservation reservation = new Reservation();
         for(FlightInstance flightInstance: flightInstances){
             Ticket reservationTicket =
-                    new Ticket(StorageHandler.randomNumber(), StorageHandler.randomNumber(), flightInstance);
+                    new Ticket(StorageHandler.randomTicketNumber(), StorageHandler.randomReservationCode(), flightInstance);
             reservation.addTicket(reservationTicket);
         }
         return reservation;
     }
 
     public static void cancelReservation(Reservation reservation){
+        reservation.cancel();
+    }
 
+    public static void confirmAndPurchase(Reservation reservation, boolean Status){
+        if(Status) reservation.confirmed();
+        else reservation.cancel();
     }
 
 

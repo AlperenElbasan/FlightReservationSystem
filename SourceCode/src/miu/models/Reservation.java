@@ -56,4 +56,8 @@ public class Reservation {
 		this.status = ReservationStatus.CANCEL;
 		tickets.clear();
 	}
+
+	public void confirmed(){
+		this.status = ReservationStatus.CONFIRM_PURCHASE;
+	}
 }
