@@ -19,12 +19,14 @@ public class Reservation {
 		tickets = new ArrayList<>();
 	}
 
-	public Reservation(UUID agentId) {
+	public Reservation(List<Ticket> tickets) {
 		super();
+		this.tickets = new ArrayList<Ticket>(tickets);
 		this.uuid = UUID.randomUUID();
-		AgentId = agentId;
-		tickets = new ArrayList<>();
+		// AgentId = agentId;
+		// tickets = new ArrayList<>();
 	}
+
 	public UUID getUuid() {
 		return uuid;
 	}
@@ -33,9 +35,8 @@ public class Reservation {
 		return AgentId;
 	}
 
-	public List<Ticket> addTicket(Ticket ticket) {
+	public void addTicket(Ticket ticket) {
 		tickets.add(ticket);
-		return tickets;
 	}
 
 	public List<Ticket> getTickets() {
