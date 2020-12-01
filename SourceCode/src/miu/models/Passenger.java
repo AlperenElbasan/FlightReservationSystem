@@ -10,6 +10,8 @@ public class Passenger {
 	private Date birthDate;
 	private String email;
 	private Address residenceAddress;
+	private List<Reservation> reservations;
+	
 	public Passenger(String firstName, String lastName, Date birthDate, String email,
 			Address residenceAddress) {
 		super();
@@ -37,5 +39,18 @@ public class Passenger {
 	}
 	public Address getResidenceAddress() {
 		return residenceAddress;
+	}
+	
+	
+	public List<Reservation> getReservation() {
+    	return reservations;
+    }
+	
+	public void addReservation(Reservation reservation) {
+		return reservations.add(reservation);
+	}
+	
+	public void removeReservation(Reservation reservation) {
+		return reservations.remove(reservation);
 	}
 }
