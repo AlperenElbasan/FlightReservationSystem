@@ -1,0 +1,10 @@
+@startuml
+Passenger -> Airport: Get the list of all airports
+Airport --> Passenger: List of Airports
+
+
+Passenger -> Airport: Get all flights from this airport
+Airport -> Flight: Get all flights
+
+Flight --> Passenger: List of Flights
+@enduml

@@ -1,0 +1,10 @@
+@startuml
+Agent -> Airport: Get the list of all airports
+Airport --> Agent: List of Airports
+
+
+Agent -> Airport: Get all flights from this airport
+Airport -> Flight: Get all flights
+
+Flight --> Agent: List of Flights
+@enduml
