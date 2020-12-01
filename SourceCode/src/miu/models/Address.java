@@ -8,9 +8,9 @@ public class Address {
 	private String city;
 	private String state;
 	private int zip;
-	public Address(UUID uuid, String street, String city, String state, int zip) {
+	public Address(String street, String city, String state, int zip) {
 		super();
-		this.uuid = uuid;
+		this.uuid = UUID.randomUUID();
 		this.street = street;
 		this.city = city;
 		this.state = state;

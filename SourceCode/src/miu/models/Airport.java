@@ -7,9 +7,9 @@ public class Airport {
 	private String code;
 	private String name;
 	private Address address;
-	public Airport(UUID uuid, String code, String name, Address address) {
+	public Airport(String code, String name, Address address) {
 		super();
-		this.uuid = uuid;
+		this.uuid = UUID.randomUUID();
 		this.code = code;
 		this.name = name;
 		this.address = address;

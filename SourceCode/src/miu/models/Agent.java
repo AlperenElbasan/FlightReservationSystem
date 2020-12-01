@@ -7,9 +7,9 @@ import java.util.UUID;
 public class Agent {
 	private UUID uuid;
 	private List<Passenger> passengers;
-	public Agent(UUID uuid) {
+	public Agent() {
 		super();
-		this.uuid = uuid;
+		this.uuid = UUID.randomUUID();
 		this.passengers = new ArrayList<>();
 	}
 	public UUID getUuid() {
