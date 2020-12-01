@@ -38,4 +38,8 @@ public class Airport {
 	public void setAddress(Address address) {
 		this.address = address;
 	}
+	@Override
+	public String toString() {
+		return "Airport [ " + uuid + ", " + code + ", " + name + ", address = " + address + " ]";
+	}
 }
