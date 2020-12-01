@@ -11,7 +11,11 @@ import miu.models.Reservation;
 import java.util.List;
 
 public class PassengerController {
-    public void createReservation(){
+    public void createReservation(Passenger passenger, List<Ticket> tickets){
+    	Reservation reservation = new Reservation(tickets);
+    	passenger.addReservation(reservation);
+    	
+    	System.out.println("added reservation to passenger...");
     }
 
     public void cancelReservation(){
@@ -28,6 +32,10 @@ public class PassengerController {
 
     public List<Reservation> getOwnReservation(Passenger passenger) {
     	return passenger.getReservation();
+    }
+    
+    public List<Reservation> getDetailsOfReservation(Reservation reservation) {
+    	
     }
 
     public static void makeReservation(List<FlightInstance> flightInstances) {
