@@ -1,6 +1,7 @@
 package miu.models;
 
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 public class Passenger {
@@ -10,6 +11,8 @@ public class Passenger {
 	private Date birthDate;
 	private String email;
 	private Address residenceAddress;
+	private List<Reservation> reservations;
+	
 	public Passenger(String firstName, String lastName, Date birthDate, String email,
 			Address residenceAddress) {
 		super();
@@ -37,5 +40,19 @@ public class Passenger {
 	}
 	public Address getResidenceAddress() {
 		return residenceAddress;
+	}
+	
+	
+	// reservation part
+	public List<Reservation> getReservation() {
+    	return reservations;
+    }
+	
+	public void addReservation(Reservation reservation) {
+		reservations.add(reservation);
+	}
+	
+	public void removeReservation(Reservation reservation) {
+		reservations.remove(reservation);
 	}
 }

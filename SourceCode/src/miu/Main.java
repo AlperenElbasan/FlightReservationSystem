@@ -15,8 +15,14 @@ public class Main extends Application {
         primaryStage.show();
     }
 
+    private static void initData() {
+        //TODO: generate all data from storage here.
+        System.out.println("initialize data");
+    }
+
     public static void main(String[] args) {
 //        For console first. Comment out launch here.
+        initData();
 
         System.out.println("Hello world");
         Utility.ExampleOuput("Hello world");

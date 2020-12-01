@@ -1,19 +1,31 @@
 package miu.models;
 
-import java.util.UUID;
+import java.util.*;
 
 public class Reservation {
 	private UUID uuid;
 	private int AgentId;
-	public Reservation(int agentId) {
+	private List<Ticket> tickets 
+	
+	public Reservation(List<Ticket> tickets) {
 		super();
+		this.tickets = new ArrayList<Ticket>(tickets);
 		this.uuid = UUID.randomUUID();
-		AgentId = agentId;
+		// AgentId = agentId;
+		// tickets = new ArrayList<>();
 	}
 	public UUID getUuid() {
 		return uuid;
 	}
-	public int getAgentId() {
+	public UUID getAgentId() {
 		return AgentId;
+	}
+
+	public void addTicket(Ticket ticket) {
+		tickets.add(ticket);
+	}
+
+	public List<Ticket> getTickets() {
+		return tickets;
 	}
 }
