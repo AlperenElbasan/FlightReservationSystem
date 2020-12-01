@@ -1,0 +1,25 @@
+@startuml AdminRead
+
+Actor Admin
+
+Admin -> Passenger : getPassenger()
+activate Passenger
+Passenger --> Admin : listOfPassengers
+deactivate
+
+Admin -> Agent : getAgent()
+activate Agent
+Agent --> Admin : listOfAgents
+deactivate
+
+Admin -> Airport : getAirport()
+activate Airport
+Airport --> Admin : listOfAirports
+deactivate
+
+Admin -> Airline : getAirline()
+activate Airline
+Airline --> Admin : listOfAirlines
+deactivate
+
+@enduml

@@ -1,0 +1,18 @@
+@startuml AdminUpdate
+
+Actor Admin
+
+Admin --> Passenger : updatePassenger()
+activate Passenger
+deactivate
+Admin --> Agent : updateAgent()
+activate Agent
+deactivate
+Admin --> Airport : updateAirport()
+activate Airport
+deactivate
+Admin --> Airline : updateAirline()
+activate Airline
+deactivate
+
+@enduml

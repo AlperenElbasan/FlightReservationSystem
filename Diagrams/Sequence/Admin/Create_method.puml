@@ -1,0 +1,18 @@
+@startuml AdminCreate
+
+Actor Admin
+
+Admin --> Passenger : createPassenger()
+activate Passenger
+deactivate
+Admin --> Agent : createAgent()
+activate Agent
+deactivate
+Admin --> Airport : createAirport()
+activate Airport
+deactivate
+Admin --> Airline : createAirline()
+activate Airline
+deactivate
+
+@enduml

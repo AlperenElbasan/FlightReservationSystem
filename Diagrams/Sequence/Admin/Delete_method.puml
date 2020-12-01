@@ -1,0 +1,18 @@
+@startuml AdminDelete
+
+Actor Admin
+
+Admin --> Passenger : deletePassenger()
+activate Passenger
+deactivate
+Admin --> Agent : deleteAgent()
+activate Agent
+deactivate
+Admin --> Airport : deleteAirport()
+activate Airport
+deactivate
+Admin --> Airline : deleteAirline()
+activate Airline
+deactivate
+
+@enduml
