@@ -4,9 +4,7 @@ import java.util.List;
 
 import miu.StorageHandler;
 import miu.Utility;
-import miu.models.Agent;
-import miu.models.Airport;
-import miu.models.FlightInstance;
+import miu.models.*;
 
 public class AgentController {
     public static void listAirports() {
@@ -17,7 +15,14 @@ public class AgentController {
 	}
 
 	public static void makeReservation(Agent agent, List<FlightInstance> flightInstances) {
-
+        Reservation reservation = new Reservation(agent.getUuid());
+        for (FlightInstance f: flightInstances) {
+            Ticket t = new Ticket(
+                    StorageHandler.randomNumber(),
+                    String.valueOf(StorageHandler.randomNumber()),
+                    f);
+            reservation.addTicket(t);
+        }
     }
 
     public static void main(String[] args) {
