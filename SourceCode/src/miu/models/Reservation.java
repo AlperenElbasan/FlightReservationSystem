@@ -1,29 +1,38 @@
 package miu.models;
 
+import miu.constants.ReservationStatus;
+
 import java.util.*;
 
 public class Reservation {
 	private UUID uuid;
 	private UUID AgentId;
 	private List<Ticket> tickets;
-	
-	public Reservation(List<Ticket> tickets) {
+	private ReservationStatus status = ReservationStatus.NONE;
+
+	/*
+	*
+	* passenger can make a reservation
+	* so we need more constructor without Agent
+	* */
+	public Reservation() {
 		super();
-		this.tickets = new ArrayList<Ticket>(tickets);
 		this.uuid = UUID.randomUUID();
-		// tickets = new ArrayList<>();
+		AgentId = null;
+		tickets = new ArrayList<>();
 	}
 
-	public Reservation(UUID agentId, List<Ticket> tickets) {
+	public Reservation(UUID agentId) {
 		super();
-		this.tickets = new ArrayList<Ticket>(tickets);
 		this.uuid = UUID.randomUUID();
-		this.AgentId = agentId;
-		// tickets = new ArrayList<>();
+		AgentId = agentId;
+		tickets = new ArrayList<>();
 	}
+
 	public UUID getUuid() {
 		return uuid;
 	}
+
 	public UUID getAgentId() {
 		return AgentId;
 	}
@@ -34,5 +43,10 @@ public class Reservation {
 
 	public List<Ticket> getTickets() {
 		return tickets;
+	}
+
+	public void cancel(){
+		this.status = ReservationStatus.CANCEL;
+		tickets.clear();
 	}
 }

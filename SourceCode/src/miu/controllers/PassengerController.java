@@ -5,7 +5,7 @@ import miu.StorageHandler;
 import miu.Utility;
 import miu.models.*;
 
-import java.util.List;
+import java.util.*;
 
 public class PassengerController {
     public void createReservation(Passenger passenger, List<Ticket> tickets){
@@ -31,14 +31,14 @@ public class PassengerController {
     	return passenger.getReservation();
     }
     
-//    public List<Reservation> getDetailsOfReservation(Reservation reservation) {
-//
-//    }
+
+    public List<Reservation> getDetailsOfReservation(Reservation reservation) {
+    	return null;
+    }
 
     public static Reservation makeReservation(List<FlightInstance> flightInstances) {
         Scanner Input = new Scanner(System.in);  // Create a Scanner object
         Reservation reservation = new Reservation(null);
-
         for(FlightInstance flightInstance: flightInstances){
             Ticket reservationTicket =
                     new Ticket(StorageHandler.randomNumber(), StorageHandler.randomNumber(), flightInstance);
@@ -59,6 +59,5 @@ public class PassengerController {
 
         List<FlightInstance> FInstance = StorageHandler.generateListFlightInstance(10);
         Reservation reservation = makeReservation(FInstance);
-
     }
 }

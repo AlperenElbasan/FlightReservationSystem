@@ -41,8 +41,7 @@ public class Passenger {
 	public Address getResidenceAddress() {
 		return residenceAddress;
 	}
-	
-	
+
 	// reservation part
 	public List<Reservation> getReservation() {
     	return reservations;
