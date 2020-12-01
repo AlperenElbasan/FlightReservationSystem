@@ -23,6 +23,9 @@ public class AgentController {
                     f);
             reservation.addTicket(t);
         }
+
+        //Save to storage then we can show
+        StorageHandler.addReservation(reservation);
     }
 
     public static void main(String[] args) {

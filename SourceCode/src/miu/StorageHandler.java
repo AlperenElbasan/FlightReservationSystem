@@ -13,6 +13,16 @@ public class StorageHandler {
     public static List<FlightInstance> flightInstances = new ArrayList<>();
     public static List<Passenger> passengers = new ArrayList<>();
 
+    public static List<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public static List<Reservation> reservations = new ArrayList<>();
+
+    public static void addReservation(Reservation reservation) {
+        reservations.add(reservation);
+    }
+
     public static Address getRandomAddress() {
     	return new Address("Main road", "Fairfield", "IOWA", (int)(Math.random() * 1000) + 3000);
     }
@@ -31,6 +41,7 @@ public class StorageHandler {
         for (int i = 0; i< amount; i++) {
             passengers.add(getRandomPassenger(i));
         }
+        return passengers;
     }
 
     public static Passenger getRandomPassenger(int num){
@@ -119,5 +130,11 @@ public class StorageHandler {
 
     public static void initializeData() {
         System.out.println("initializeData");
+    }
+
+    public static void printReservations() {
+        for (Reservation r: reservations) {
+            System.out.print("reservation: " + r.getAgentId());
+        }
     }
 }

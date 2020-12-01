@@ -60,6 +60,7 @@ Class Reservation {
     AgentId: int
     void setAgentId(int agentId)
     int getAgentId(): int
+    tickets: List<Ticket>
 }
 
 Class Agent {

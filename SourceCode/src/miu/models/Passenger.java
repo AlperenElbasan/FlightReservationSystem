@@ -42,16 +42,15 @@ public class Passenger {
 		return residenceAddress;
 	}
 	
-	
 	public List<Reservation> getReservation() {
     	return reservations;
     }
 	
-	public void addReservation(Reservation reservation) {
+	public boolean addReservation(Reservation reservation) {
 		return reservations.add(reservation);
 	}
 	
-	public void removeReservation(Reservation reservation) {
+	public boolean removeReservation(Reservation reservation) {
 		return reservations.remove(reservation);
 	}
 }
