@@ -71,8 +71,8 @@ Class Agent {
 
 Class Ticket {
     UUID : long
-    Number : BigInteger 
-    reservationCode : Srting
+    Number : String 
+    reservationCode : String
     flightInstance : FlightInstance
 }
 
