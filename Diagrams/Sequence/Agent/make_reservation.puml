@@ -1,6 +1,6 @@
 @startuml
 
-Passenger -> Reservation: Make a reservation
+Agent -> Reservation: Make a reservation
 Reservation -> Ticket: Create a ticket
 Ticket -> FlightInstance: Get the flight instance
 Reservation -> Ticket: get Reservation code

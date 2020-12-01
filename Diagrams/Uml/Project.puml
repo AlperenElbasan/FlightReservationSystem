@@ -90,4 +90,6 @@ Reservation "0..1" --- "0..1" Agent
 
 FlightInstance "1..*" --- "0..*" Passenger
 
+Airport "1..2" --o "1..*" Flight
+
 @enduml
