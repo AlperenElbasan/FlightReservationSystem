@@ -4,14 +4,21 @@ import java.util.*;
 
 public class Reservation {
 	private UUID uuid;
-	private int AgentId;
-	private List<Ticket> tickets 
+	private UUID AgentId;
+	private List<Ticket> tickets;
 	
 	public Reservation(List<Ticket> tickets) {
 		super();
 		this.tickets = new ArrayList<Ticket>(tickets);
 		this.uuid = UUID.randomUUID();
-		// AgentId = agentId;
+		// tickets = new ArrayList<>();
+	}
+
+	public Reservation(UUID agentId, List<Ticket> tickets) {
+		super();
+		this.tickets = new ArrayList<Ticket>(tickets);
+		this.uuid = UUID.randomUUID();
+		this.AgentId = agentId;
 		// tickets = new ArrayList<>();
 	}
 	public UUID getUuid() {
