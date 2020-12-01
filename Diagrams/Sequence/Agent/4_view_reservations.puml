@@ -1,0 +1,11 @@
+@startuml ViewReservations
+Actor Agent
+
+Agent -> Passenger: getReservationDoneByAgent()
+activate Passenger
+Passenger -> Passenger: getReservations()
+activate Passenger
+deactivate
+deactivate
+
+@enduml

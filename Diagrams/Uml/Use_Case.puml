@@ -1,0 +1,58 @@
+@startuml
+:Admin: as Ad
+:Passenger: as Pss
+:Agent: as Ag
+
+left to right direction
+skinparam packageStyle rectangle
+
+Package Application{
+  rectangle  View{
+    usecase "Airport List" as UC1
+    usecase "Airlines flight by airport code" as UC2
+    usecase "Flight between 2 destionations by Date" as UC3
+    usecase "Reservation" as UC4
+    usecase "Passenger & Reservation by me" as UC5
+    usecase "Detail reservation" as UC6
+    usecase "Detail reservation make by me" as UC7
+
+    }
+  rectangle Action{
+    usecase "Make reservation" as UC8
+    usecase "Cancel reservation"  as UC9
+    usecase "Confirm and purchase reservation" as UC10
+    }
+}
+
+Package AdminApplication{
+  rectangle "Create, View, Update, Delete" as AdminUC{
+    usecase "Passenger"
+    usecase "Agent"
+    usecase "Airport"
+    usecase "Airline"
+    usecase "Flight"
+  }
+}
+
+
+Pss --> UC1
+Pss --> UC2
+Pss --> UC3
+Pss --> UC4
+Pss --> UC6
+Pss --> UC8
+Pss --> UC9
+Pss --> UC10
+
+UC1 <-- Ag
+UC2 <-- Ag
+UC3 <-- Ag
+UC5 <-- Ag
+UC7 <-- Ag
+UC8 <-- Ag
+UC9 <-- Ag
+UC10 <-- Ag
+
+Ad --> AdminUC
+
+@enduml
