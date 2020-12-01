@@ -12,7 +12,7 @@ public class Reservation {
 		this.tickets = new ArrayList<Ticket>(tickets);
 		this.uuid = UUID.randomUUID();
 		// AgentId = agentId;
-		tickets = new ArrayList<>();
+		// tickets = new ArrayList<>();
 	}
 	public UUID getUuid() {
 		return uuid;
