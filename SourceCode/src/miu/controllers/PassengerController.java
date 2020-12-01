@@ -27,31 +27,26 @@ public class PassengerController {
     }
 
     public List<Reservation> getOwnReservation(Passenger passenger) {
-    	return passenger.getReservations();
+    	return passenger.getReservation();
     }
 
     public static void makeReservation(List<FlightInstance> flightInstances) {
-        Reservation reservation = new Reservation(0);
-        System.out.println("Please select your ");
+        Scanner Input = new Scanner(System.in);  // Create a Scanner object
+        Reservation reservation = new Reservation(null);
+        for(FlightInstance flightInstance: flightInstances){
+            Utility.viewFlightInstanceDetail(flightInstance);
+        }
+        System.out.println("Please select your flight");
+        int flightNumber = Input.nextInt();
 
     }
 
-    public void viewFlightInstanceDetail(FlightInstance flightInstance){
-        System.out.println("=======================");
-        System.out.println(flightInstance.getFlight().getNumber() + ": " +
-                flightInstance.getFlight().getDepartureAirport() + " --> " +
-                flightInstance.getFlight().getArrivalAirport());
-        System.out.println();
-        System.out.println("=======================");
-    }
+
     public static void main(String[] args) {
         //TODO: implement cases of passenger here.
         Utility.ExampleOuput("Passenger Hello world");
         StorageHandler storageHandler = new StorageHandler();
         List<FlightInstance> FInstance = storageHandler.generateListFlightInstance(10);
-
+        makeReservation(FInstance);
     }
-
-
-
 }

@@ -31,6 +31,7 @@ public class StorageHandler {
         for (int i = 0; i< amount; i++) {
             passengers.add(getRandomPassenger(i));
         }
+        return passengers;
     }
 
     public static Passenger getRandomPassenger(int num){

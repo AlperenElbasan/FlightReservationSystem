@@ -48,10 +48,10 @@ public class Passenger {
     }
 	
 	public void addReservation(Reservation reservation) {
-		return reservations.add(reservation);
+		reservations.add(reservation);
 	}
 	
 	public void removeReservation(Reservation reservation) {
-		return reservations.remove(reservation);
+		reservations.remove(reservation);
 	}
 }

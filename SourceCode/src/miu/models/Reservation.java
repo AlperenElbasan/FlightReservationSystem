@@ -19,7 +19,7 @@ public class Reservation {
 		return AgentId;
 	}
 
-	public List<Ticket> addTicket(Ticket ticket) {
+	public void addTicket(Ticket ticket) {
 		tickets.add(ticket);
 	}
 
