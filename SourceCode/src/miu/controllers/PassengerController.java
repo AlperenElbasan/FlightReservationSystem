@@ -3,8 +3,11 @@ package miu.controllers;
 import miu.Utility;
 
 public class PassengerController {
-    public void createReservation(){
-    	Reservation reservation = new Reservation(?);
+    public void createReservation(Passenger passenger, List<Ticket> tickets){
+    	Reservation reservation = new Reservation(tickets);
+    	passenger.addReservation(reservation);
+    	
+    	System.out.println("added reservation to passenger...");
     }
 
     public void cancelReservation(){
@@ -20,7 +23,13 @@ public class PassengerController {
     }
     
     public List<Reservation> getOwnReservation(Passenger passenger) {
+    	// View list of own reservations
+    	
     	return passenger.getReservations();
+    }
+    
+    public List<Reservation> getDetailsOfReservation(Reservation reservation) {
+    	
     }
 
     public static void main(String[] args) {

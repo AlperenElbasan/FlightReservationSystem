@@ -5,10 +5,13 @@ import java.util.UUID;
 public class Reservation {
 	private UUID uuid;
 	private int AgentId;
-	public Reservation(int agentId) {
+	private List<Ticket> tickets 
+	
+	public Reservation(List<Ticket> tickets) {
 		super();
 		this.uuid = UUID.randomUUID();
-		AgentId = agentId;
+		this.tickets = new ArrayList<Ticket>(tickets);
+//		AgentId = agentId;
 	}
 	public UUID getUuid() {
 		return uuid;

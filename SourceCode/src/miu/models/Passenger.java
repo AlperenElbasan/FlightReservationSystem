@@ -42,6 +42,7 @@ public class Passenger {
 	}
 	
 	
+	// reservation part
 	public List<Reservation> getReservation() {
     	return reservations;
     }
