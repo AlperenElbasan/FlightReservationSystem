@@ -71,7 +71,7 @@ Class Ticket {
     UUID : long
     Number : BigInteger 
     reservationCode : Srting
-    Flight : Flight
+    flightInstance : FlightInstance
 }
 
 Airport "1" *-- "1" Address
@@ -82,6 +82,9 @@ Passenger "1" *-- "1" Address
 Reservation "0..1" --- "1" Passenger
 Flight "0..*" --- "1..*" Passenger
 Ticket "1..*" --- "1" Reservation
+
+Ticket "1..*" --- "1" FlightInstance
+
 Agent "0..*" --- "1..*" Passenger
 Reservation "0..1" --- "0..1" Agent
 
