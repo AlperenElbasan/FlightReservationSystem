@@ -1,0 +1,14 @@
+@startuml
+
+Passenger -> Reservation: Confirm a reservation
+activate Reservation
+
+Reservation -> Ticket: Export Tickets.
+activate Ticket
+deactivate Ticket
+
+Reservation -> Ticket: get Reservation code
+activate Ticket
+deactivate Ticket
+
+@enduml
