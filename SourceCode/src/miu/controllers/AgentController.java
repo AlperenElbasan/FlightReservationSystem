@@ -18,8 +18,8 @@ public class AgentController {
         Reservation reservation = new Reservation(agent.getUuid(),null);
         for (FlightInstance f: flightInstances) {
             Ticket t = new Ticket(
-                    StorageHandler.randomNumber(),
-                    String.valueOf(StorageHandler.randomNumber()),
+                    StorageHandler.randomTicketNumber(),
+                    StorageHandler.randomReservationCode(),
                     f);
             reservation.addTicket(t);
         }
@@ -31,17 +31,21 @@ public class AgentController {
     public static void cancelReservation(Agent agent, Reservation reservation) {
         reservation.cancel();
     }
-    
+
     public static void main(String[] args) {
         Utility.ExampleOuput("AgentController Hello world");
         listAirports();
 
         // Create agent
-        Agent agent = new Agent();
-        agent.addPassenger(StorageHandler.getRandomPassenger(1));
-        agent.addPassenger(StorageHandler.getRandomPassenger(2));
+//        Agent agent = new Agent();
+//        agent.addPassenger(StorageHandler.getRandomPassenger(1));
+//        agent.addPassenger(StorageHandler.getRandomPassenger(2));
+//
+//        List<FlightInstance> flightInstances = StorageHandler.generateListFlightInstance(5);
+//        makeReservation(agent, flightInstances);
 
-        List<FlightInstance> flightInstances = StorageHandler.generateListFlightInstance(5);
-        makeReservation(agent, flightInstances);
+        System.out.println("test randomReservationCode " + StorageHandler.randomReservationCode());
+        System.out.println("test randomTicketNumber " + StorageHandler.randomTicketNumber());
+
     }
 }

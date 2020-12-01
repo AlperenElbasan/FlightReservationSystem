@@ -2,6 +2,7 @@ package miu;
 
 import miu.models.*;
 
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -35,6 +36,26 @@ public class StorageHandler {
 
     public static int randomNumber(){
         return (int)(Math.random() * 1000);
+    }
+
+    public static String randomReservationCode(){
+        int len = 6;
+        String AB = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        SecureRandom rnd = new SecureRandom();
+        StringBuilder sb = new StringBuilder(len);
+        for(int i = 0; i < len; i++)
+            sb.append(AB.charAt(rnd.nextInt(AB.length())));
+        return sb.toString();
+    }
+
+    public static String randomTicketNumber(){
+        int len = 20;
+        String AB = "0123456789";
+        SecureRandom rnd = new SecureRandom();
+        StringBuilder sb = new StringBuilder(len);
+        for(int i = 0; i < len; i++)
+            sb.append(AB.charAt(rnd.nextInt(AB.length())));
+        return sb.toString();
     }
 
     public static List<Passenger> getListPassenger(int amount){
