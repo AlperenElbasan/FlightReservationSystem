@@ -1,10 +1,27 @@
-@startuml
+@startuml ViewFlights
+Actor Agent
+
 
 Agent -> SystemHelper : getFlights(Dapart, Arrival, Date)
+activate SystemHelper
 SystemHelper -> FlightInstance : getAllDeparturesOnDate(Date)
+activate FlightInstance
 FlightInstance -> Address : getAirportName
+activate Address
+deactivate
+deactivate
+
 SystemHelper -> FlightInstance : getAllArrivalOnDate(Date)
+activate FlightInstance
 FlightInstance -> Address : getAirportName
-SystemHelper -> FlightInstance : compareAndGet(Depart, Arrival, allDeparts, allArrivals)
+activate Address
+deactivate
+
+deactivate
+SystemHelper -> SystemHelper : compareAndGet(Depart, Arrival, allDeparts, allArrivals)
+activate SystemHelper
+deactivate
+deactivate
+
 
 @enduml

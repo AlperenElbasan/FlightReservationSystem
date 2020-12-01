@@ -1,4 +1,12 @@
-@startuml
+@startuml ViewDetailsOfReservation
+
+Actor Passenger
+
 Passenger -> Reservation : getDetail()
+activate Reservation
 Reservation -> Ticket : getDetail()
+activate Ticket
+deactivate
+deactivate
+
 @enduml
