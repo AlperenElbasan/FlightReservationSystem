@@ -1,4 +1,4 @@
-package AirlineReservationSystem.Controllers;
+package controllers;
 
 public class Admin {
     private int name;
