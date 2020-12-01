@@ -1,9 +1,0 @@
-@startuml
-
-Agent -> Reservation: Cancel a reservation
-activate Reservation
-
-Reservation -> Ticket: remove a ticket
-activate Ticket
-
-@enduml

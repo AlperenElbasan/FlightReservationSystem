@@ -1,0 +1,16 @@
+@startuml
+
+-> AgentController: MakeAReservation(flights: List<Flight>)
+activate AgentController
+AgentController -> Reservation : Initialize
+activate Reservation
+deactivate Reservation
+
+AgentController -> Ticket: Create a ticket
+activate Ticket
+deactivate Ticket
+
+AgentController -> Ticket: get Reservation code
+activate Ticket
+
+@enduml

@@ -1,0 +1,11 @@
+@startuml
+
+-> AgentController: cancelReservation(reservation: Reservation)
+activate AgentController
+
+AgentController -> Reservation: cancel
+activate Reservation
+Reservation -> Ticket: remove a ticket
+activate Ticket
+
+@enduml
