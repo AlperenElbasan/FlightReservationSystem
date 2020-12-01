@@ -1,6 +1,6 @@
 @startuml
 
-Passenger -> Reservation: Cancel a reservation
+Agent -> Reservation: Cancel a reservation
 Reservation -> Ticket: remove a ticket
 
 @enduml
