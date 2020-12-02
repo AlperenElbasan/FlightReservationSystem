@@ -19,8 +19,12 @@ public class Flight {
 		this.number = number;
 		this.capacity = capacity;
 		this.airlineOwn = airlineOwn;
+		
 		this.departureAirport = departureAirport;
+		departureAirport.addDepartureFlight(this);
 		this.arrivalAirport = arrivalAirport;
+		arrivalAirport.addArrivalFlights(this);
+		
 		this.departureTime = departureTime;
 		this.arrivalTime = arrivalTime;
 	}
@@ -48,4 +52,11 @@ public class Flight {
 	public Date getArrivalTime() {
 		return arrivalTime;
 	}
+	@Override
+	public String toString() {
+		return "Flight [number=" + number + ", airlineOwn=" + airlineOwn.getCode() + ", departureAirport=" + departureAirport.getName()
+				+ ", arrivalAirport=" + arrivalAirport.getName() + ", departureTime=" + departureTime + ", arrivalTime="
+				+ arrivalTime + "]";
+	}
+	
 }

@@ -26,5 +26,9 @@ public class Airline {
 	public String getHistory() {
 		return history;
 	}
+	@Override
+	public String toString() {
+		return "Airline [code=" + code + ", name=" + name + ", history=" + history + "]";
+	}
 }
 

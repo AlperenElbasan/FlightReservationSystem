@@ -4,11 +4,13 @@ import java.util.*;
 import miu.StorageHandler;
 import miu.Utility;
 import miu.models.Agent;
+import miu.models.Airline;
+import miu.models.Airport;
+import miu.models.Flight;
 import miu.models.FlightInstance;
 import miu.models.Passenger;
 import miu.models.Reservation;
-
-import java.util.List;
+import miu.models.Ticket;
 
 public class PassengerController {
     public void createReservation(Passenger passenger, List<Ticket> tickets){
@@ -22,8 +24,43 @@ public class PassengerController {
 
     }
 
-    public void getListAirport(){
-
+    public static void listAirports(){
+    	StorageHandler.createRandomAirports(10);
+		List<Airport> airports = StorageHandler.airports;
+		for (Airport airport: airports)
+			System.out.println(airport);
+		StorageHandler.emptyAirports();
+    }
+    
+    public static void listFlights(String code) {
+    	System.out.println("\n#####\nListing airlines for the code " + code + "\n");
+    	// populate the db...
+    	Airport departureAirport = new Airport(code, code + " Airport", StorageHandler.getRandomAddress());
+    	Airport arrivalAirport = new Airport("WYZ", "WYZ Airport", StorageHandler.getRandomAddress());
+    	
+    	int i = 0;
+    	while (i++ < 5)
+    		new Flight(1, 350, StorageHandler.getRandomAirline(), departureAirport, arrivalAirport, new Date(), new Date());
+    	
+    	
+    	// perform the query
+    	List<Flight> depFlights = departureAirport.getDepartureFlights();
+    	List<Airline> airlines = new ArrayList<>();
+    	System.out.println("First list all the flights\n");
+    	for (Flight depFlight: depFlights) {
+    		Airline depFlightAirline = depFlight.getAirlineOwn();
+    		if (!airlines.contains(depFlightAirline)) {
+    			airlines.add(depFlightAirline);
+    		}
+    		
+    		System.out.println(depFlight);
+    	}
+    	
+    	System.out.println("\nAnd now all the airlines\n");
+    	for (Airline airline: airlines)
+    		System.out.println(airline);
+    	
+    	System.out.println("\nEnd of the listing airlines for the code \n#####\n");
     }
 
     public void getFlightsOnDate(Date departureAirport, Date arrivalAirport, Date date) {
@@ -35,7 +72,7 @@ public class PassengerController {
     }
     
     public List<Reservation> getDetailsOfReservation(Reservation reservation) {
-    	
+    	return null;
     }
 
     public static void makeReservation(List<FlightInstance> flightInstances) {
@@ -51,10 +88,13 @@ public class PassengerController {
 
 
     public static void main(String[] args) {
-        //TODO: implement cases of passenger here.
-        Utility.ExampleOuput("Passenger Hello world");
-        StorageHandler storageHandler = new StorageHandler();
-        List<FlightInstance> FInstance = storageHandler.generateListFlightInstance(10);
+    	// First use-case
+    	listAirports();
+    	// Second use-case
+        listFlights("COH");
+    	
+    	
+        List<FlightInstance> FInstance = StorageHandler.generateListFlightInstance(10);
         makeReservation(FInstance);
     }
 }
