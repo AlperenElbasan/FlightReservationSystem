@@ -11,11 +11,12 @@ public class AgentController {
     public static void listAirports() {
 		StorageHandler.createRandomAirports(10);
 		List<Airport> airports = StorageHandler.airports;
+
 		for (Airport airport: airports)
 			System.out.println(airport);
 	}
 
-	public Reservation createReservation(Agent agent, Passenger passenger, List<FlightInstance> flightInstances) {
+	public static Reservation createReservation(Agent agent, Passenger passenger, List<FlightInstance> flightInstances) {
         Reservation reservation = new Reservation(agent.getUuid());
         for (FlightInstance f: flightInstances) {
             Ticket t = new Ticket(
