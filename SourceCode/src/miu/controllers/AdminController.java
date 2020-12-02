@@ -13,7 +13,6 @@ public class AdminController {
         this.name = name;
     }
 
-
     public static void main(String[] args) {
         //TODO: implement cases of passenger here.
         Utility.ExampleOuput("AdminController Hello world");

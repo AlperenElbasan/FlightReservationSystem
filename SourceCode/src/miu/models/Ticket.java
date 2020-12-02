@@ -4,10 +4,10 @@ import java.util.UUID;
 
 public class Ticket {
 	private UUID uuid;
-	private long number;
+	private String number;
 	private String reservationCode;
 	private FlightInstance flightInstance;
-	public Ticket(long number, String reservationCode, FlightInstance flightInstance) {
+	public Ticket(String number, String reservationCode, FlightInstance flightInstance) {
 		super();
 		this.uuid = UUID.randomUUID();
 		this.number = number;
@@ -17,7 +17,7 @@ public class Ticket {
 	public UUID getUuid() {
 		return uuid;
 	}
-	public long getNumber() {
+	public String getNumber() {
 		return number;
 	}
 	public String getReservationCode() {
@@ -26,4 +26,5 @@ public class Ticket {
 	public FlightInstance getFlightInstance() {
 		return flightInstance;
 	}
+
 }

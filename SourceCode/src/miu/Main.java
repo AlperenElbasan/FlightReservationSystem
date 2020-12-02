@@ -5,6 +5,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import miu.cases.PassengerCases;
+import miu.controllers.PassengerController;
 
 public class Main extends Application {
     @Override
@@ -18,16 +20,24 @@ public class Main extends Application {
     private static void initData() {
         //TODO: generate all data from storage here.
         System.out.println("initialize data");
+        StorageHandler.initializeData();
+    }
+
+    public static void PassengerHandler(){
+        PassengerCases.makeReservation();
+    }
+
+    public static void AgentHandler(){
+        //TODO: call to cases here
     }
 
     public static void main(String[] args) {
-//        For console first. Comment out launch here.
         initData();
 
-        System.out.println("Hello world");
-        Utility.ExampleOuput("Hello world");
-        launch(args);
+        PassengerHandler();
 
+        AgentHandler();
 
+//        launch(args);
     }
 }

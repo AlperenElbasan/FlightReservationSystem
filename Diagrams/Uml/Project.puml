@@ -60,6 +60,8 @@ Class Reservation {
     AgentId: int
     void setAgentId(int agentId)
     int getAgentId(): int
+    tickets: List<Ticket>
+    status: enum
 }
 
 Class Agent {
@@ -69,8 +71,8 @@ Class Agent {
 
 Class Ticket {
     UUID : long
-    Number : BigInteger 
-    reservationCode : Srting
+    Number : String 
+    reservationCode : String
     flightInstance : FlightInstance
 }
 

@@ -9,8 +9,7 @@ public class Utility {
 
     public static void viewFlightInstanceDetail(FlightInstance flightInstance){
         System.out.println("=======================");
-        System.out.println(flightInstance.getFlight().getNumber() + ": " +
-                flightInstance.getFlight().getDepartureAirport().getName() + " --> " +
+        System.out.println(flightInstance.getFlight().getDepartureAirport().getName() + " --> " +
                 flightInstance.getFlight().getArrivalAirport().getName());
         System.out.println("Flight Date: " +
                 flightInstance.getFlightDate() + ", " +

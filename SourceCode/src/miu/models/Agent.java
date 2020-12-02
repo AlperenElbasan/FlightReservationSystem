@@ -23,4 +23,5 @@ public class Agent {
 	public void addPassenger(Passenger passenger) {
 		passengers.add(passenger);
 	}
+
 }

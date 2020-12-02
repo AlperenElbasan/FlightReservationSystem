@@ -3,18 +3,13 @@ package miu.controllers;
 import java.util.*;
 import miu.StorageHandler;
 import miu.Utility;
-import miu.models.Agent;
-import miu.models.Airline;
-import miu.models.Airport;
-import miu.models.Flight;
-import miu.models.FlightInstance;
-import miu.models.Passenger;
-import miu.models.Reservation;
-import miu.models.Ticket;
+import miu.models.*;
+
+import java.util.*;
 
 public class PassengerController {
     public void createReservation(Passenger passenger, List<Ticket> tickets){
-    	Reservation reservation = new Reservation(tickets);
+    	Reservation reservation = new Reservation();
     	passenger.addReservation(reservation);
     	
     	System.out.println("added reservation to passenger...");
@@ -71,30 +66,50 @@ public class PassengerController {
     	return passenger.getReservation();
     }
     
+
     public List<Reservation> getDetailsOfReservation(Reservation reservation) {
     	return null;
     }
 
-    public static void makeReservation(List<FlightInstance> flightInstances) {
-        Scanner Input = new Scanner(System.in);  // Create a Scanner object
-        Reservation reservation = new Reservation(null);
+    public static Reservation makeReservation(Passenger passenger, List<FlightInstance> flightInstances) {
+        Reservation reservation = new Reservation();
         for(FlightInstance flightInstance: flightInstances){
-            Utility.viewFlightInstanceDetail(flightInstance);
+            Ticket reservationTicket =
+                    new Ticket(StorageHandler.randomTicketNumber(),
+                            reservation.getReservationCode(),
+                            flightInstance);
+            reservation.addTicket(reservationTicket);
         }
-        System.out.println("Please select your flight");
-        int flightNumber = Input.nextInt();
+        passenger.addReservation(reservation);
 
+        StorageHandler.addReservation(reservation);
+        StorageHandler.setTickets(reservation.getReservationCode(), reservation.getTickets());
+
+        return reservation;
     }
 
+    public static void cancelReservation(String reservationCode){
+        StorageHandler.removeTickets(reservationCode);
+        StorageHandler.removeReservation(reservationCode);
+    }
+
+    public static void confirmAndPurchase(String reservationCode, Boolean status){
+        if(status) {
+            Reservation reservation = StorageHandler.getReservationByCode(reservationCode);
+            reservation.confirmed();
+            StorageHandler.updateReservation(reservation);
+        } else {
+            cancelReservation(reservationCode);
+        }
+    }
 
     public static void main(String[] args) {
     	// First use-case
     	listAirports();
     	// Second use-case
         listFlights("COH");
-    	
-    	
         List<FlightInstance> FInstance = StorageHandler.generateListFlightInstance(10);
-        makeReservation(FInstance);
+        Passenger passenger = StorageHandler.getRandomPassenger(2);
+        Reservation reservation = makeReservation(passenger, FInstance);
     }
 }
