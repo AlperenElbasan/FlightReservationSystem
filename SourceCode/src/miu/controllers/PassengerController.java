@@ -5,8 +5,6 @@ import miu.StorageHandler;
 import miu.Utility;
 import miu.models.*;
 
-import java.util.*;
-
 public class PassengerController {
     // public void createReservation(Passenger passenger, List<Ticket> tickets){
     // 	Reservation reservation = new Reservation();
@@ -56,23 +54,22 @@ public class PassengerController {
 
     //TODO: Bayartsogt - please push DateUtils file. IDE cannot file so it has error now. I commented out temporary.
     // added by Bayartsogt
-//    public static List<FlightInstance> getFlightsOnDate(String departureAirportName, String arrivalAirportName, Date date) {
-//        List<FlightInstance> flightInstancesFound = ArrayList<FlightInstance>();
-//
-//        for (FlightInstance flightInstance: StorageHandler.flightInstances){
-//
-//            // comparing dates, departure & arrival airport NAMES
-//            boolean case1 = DateUtils.isSameDay(flightInstance.getFlightDate(), date);
-//            boolean case2 = flightInstance.getFlight().getDepartureAirport().getName() == departureAirportName;
-//            boolean case3 = flightInstance.getFlight().getArrivalAirport().getName() == arrivalAirportName;
-//
-//            if (case1 && case2 && case3){
-//                flightInstancesFound.add(flightInstance);
-//            }
-//        }
-//
-//        return flightInstancesFound;
-//    }
+    public static List<FlightInstance> getFlightsOnDate(String departureAirportName, String arrivalAirportName, Date date) {
+        List<FlightInstance> flightInstancesFound = new ArrayList<FlightInstance>();
+
+        for (FlightInstance flightInstance: StorageHandler.flightInstances){
+            // comparing dates, departure & arrival airport NAMES
+            boolean case1 = flightInstance.getFlightDate().compareTo(date) == 0;
+            boolean case2 = flightInstance.getFlight().getDepartureAirport().getName().equals(departureAirportName);
+            boolean case3 = flightInstance.getFlight().getArrivalAirport().getName().equals(arrivalAirportName);
+
+            if (case1 && case2 && case3){
+                flightInstancesFound.add(flightInstance);
+            }
+        }
+
+        return flightInstancesFound;
+    }
 
     // added by Bayartsogt
     public static List<Reservation> getOwnReservation(Passenger passenger) {
