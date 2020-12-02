@@ -26,4 +26,5 @@ public class Ticket {
 	public FlightInstance getFlightInstance() {
 		return flightInstance;
 	}
+
 }

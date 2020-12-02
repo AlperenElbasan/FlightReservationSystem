@@ -3,9 +3,7 @@ package miu;
 import miu.models.*;
 
 import java.security.SecureRandom;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 public class StorageHandler {
 	public static List<Airport> airports = new ArrayList<>();
@@ -13,16 +11,50 @@ public class StorageHandler {
     public static List<Flight> flights = new ArrayList<>();
     public static List<FlightInstance> flightInstances = new ArrayList<>();
     public static List<Passenger> passengers = new ArrayList<>();
+    public static List<Reservation> reservations = new ArrayList<>();
 
-    public static List<Reservation> getReservations() {
+    public static HashMap<String, Reservation> reservationsMap = new HashMap<>();
+
+
+    public static HashMap<String, List<Ticket>> ticketsByReservationCode = new HashMap<>();
+
+    public static List<Ticket> getTicketByReservationCode(String reservationCode){
+        return ticketsByReservationCode.get(reservationCode);
+    }
+
+    public static List<Ticket> setTickets(String reservationCode, List<Ticket> tickets){
+        return ticketsByReservationCode.put(reservationCode, tickets);
+    }
+
+    public static List<Ticket> removeTickets(String reservationCode){
+        return ticketsByReservationCode.remove(reservationCode);
+    }
+
+    // Reservations
+    public static Reservation getReservationByCode(String reservationCode) {
+        return reservationsMap.get(reservationCode);
+    }
+
+    public static List<Reservation> getAllReservations() {
+        List<Reservation> reservations = new ArrayList<>();
+        for(Map.Entry<String, Reservation> entry: reservationsMap.entrySet()) {
+            reservations.add(entry.getValue());
+        }
         return reservations;
     }
 
-    public static List<Reservation> reservations = new ArrayList<>();
-
     public static void addReservation(Reservation reservation) {
-        reservations.add(reservation);
+        reservationsMap.put(reservation.getReservationCode(), reservation);
     }
+
+    public static void updateReservation(Reservation reservation) {
+        reservationsMap.put(reservation.getReservationCode(), reservation);
+    }
+
+    public static void removeReservation(String reservationCode) {
+        reservationsMap.remove(reservationCode);
+    }
+    // End reservations
 
     public static Address getRandomAddress() {
     	return new Address("Main road", "Fairfield", "IOWA", (int)(Math.random() * 1000) + 3000);
@@ -65,12 +97,12 @@ public class StorageHandler {
         return passengers;
     }
 
-    public static Passenger getRandomPassenger(int num){
+    public static Passenger getRandomPassenger(int unique){
         return new Passenger(
-                "name" + num,
-                "last name" + num,
+                "name" + unique,
+                "last name" + unique,
                 new Date(),
-                num +"_email@gmail.com",
+                unique +"_email@gmail.com",
                 getRandomAddress()
         );
     }

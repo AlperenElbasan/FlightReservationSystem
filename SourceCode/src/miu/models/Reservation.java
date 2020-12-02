@@ -1,5 +1,6 @@
 package miu.models;
 
+import miu.StorageHandler;
 import miu.constants.ReservationStatus;
 
 import java.util.*;
@@ -9,6 +10,11 @@ public class Reservation {
 	private UUID AgentId;
 	private List<Ticket> tickets;
 	private ReservationStatus status = ReservationStatus.NONE;
+	private String reservationCode;
+
+	public void setStatus(ReservationStatus status) {
+		this.status = status;
+	}
 
 	/*
 	*
@@ -20,6 +26,11 @@ public class Reservation {
 		this.uuid = UUID.randomUUID();
 		AgentId = null;
 		tickets = new ArrayList<>();
+		reservationCode = StorageHandler.randomReservationCode();
+	}
+
+	public String getReservationCode() {
+		return reservationCode;
 	}
 
 	public Reservation(UUID agentId) {
