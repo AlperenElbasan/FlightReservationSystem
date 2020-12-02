@@ -90,15 +90,15 @@ public class AdminController {
     }
 
     //TODO: Bayartsogt - please create setter for airline. Because it has error now so I commented out temporary.
-//    public static void updateAirlineName(Airline airline, String name){
-//        airline.setName(name);
-//    }
-//    public static void updateAirlineCode(Airline airline, String code){
-//        airline.setCode(code);
-//    }
-//    public static void updateAirlinegetHistory(Airline airline, String history){
-//        airline.setAddress(history);
-//    }
+    public static void updateAirlineName(Airline airline, String name){
+        airline.setName(name);
+    }
+    public static void updateAirlineCode(Airline airline, String code){
+        airline.setCode(code);
+    }
+    public static void updateAirlinegetHistory(Airline airline, String history){
+        airline.setHistory(history);
+    }
 //
 //    public static void deleteAirline(Airline airline){
 //        //TODO: Bayartsogt - please use hasmap to handle. See reservationsMap in StorageHandler. Because it has error now so I commented out temporary.
