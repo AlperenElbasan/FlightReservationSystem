@@ -4,6 +4,8 @@ import miu.Utility;
 import miu.models.*;
 import miu.StorageHandler;
 
+import java.util.Date;
+
 public class AdminController {
     private int name;
 
@@ -26,6 +28,7 @@ public class AdminController {
     public static void readPassenger(Passenger passenger){
         Utility.viewPassengerDetail(passenger); // do we need to find passenger and show it??
     }
+
     public static void updatePassengerFirstName(Passenger passenger, String firstName){
         passenger.setFirstName(firstName);
     }
@@ -41,7 +44,9 @@ public class AdminController {
 
     // Agent CRUD
     public static void readAgent(Agent agent){
-        Utility.viewPassengerDetail(passenger); // do we need to find passenger and show it??
+        for (Passenger p: agent.getPassengers()) {
+            Utility.viewPassengerDetail(p);
+        }
     }
     public static void updateAgentFirstName(Agent agent, String firstName){
         agent.setFirstName(firstName);
@@ -52,9 +57,11 @@ public class AdminController {
     public static void updateAgentEmail(Agent agent, String email){
         agent.setEmail(email);
     }
-    public static void deleteAgent(Agent agent){
-        StorageHandler.agents.remove(agent);
-    }
+
+    //TODO: Bayartsogt - please use hasmap to handle. See reservationsMap in StorageHandler. Because it has error now so I commented out temporary.
+//    public static void deleteAgent(Agent agent){
+//        StorageHandler.agents.remove(agent);
+//    }
 
     // Airport CRUD
     public static void readAirport(Airport airport){
@@ -81,18 +88,22 @@ public class AdminController {
         System.out.println(airline.toString());
         System.out.println("====================");
     }
-    public static void updateAirlineName(Airline airline, String name){
-        airline.setName(name);
-    }
-    public static void updateAirlineCode(Airline airline, String code){
-        airline.setCode(code);
-    }
-    public static void updateAirlinegetHistory(Airline airline, String history){
-        airline.setAddress(history);
-    }
-    public static void deleteAirline(Airline airline){
-        StorageHandler.airlines.remove(airline);
-    }
+
+    //TODO: Bayartsogt - please create setter for airline. Because it has error now so I commented out temporary.
+//    public static void updateAirlineName(Airline airline, String name){
+//        airline.setName(name);
+//    }
+//    public static void updateAirlineCode(Airline airline, String code){
+//        airline.setCode(code);
+//    }
+//    public static void updateAirlinegetHistory(Airline airline, String history){
+//        airline.setAddress(history);
+//    }
+//
+//    public static void deleteAirline(Airline airline){
+//        //TODO: Bayartsogt - please use hasmap to handle. See reservationsMap in StorageHandler. Because it has error now so I commented out temporary.
+//        StorageHandler.airlines.remove(airline);
+//    }
 
     public static void main(String[] args) {
         //TODO: implement cases of passenger here.

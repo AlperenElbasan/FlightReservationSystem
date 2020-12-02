@@ -8,6 +8,23 @@ import java.util.UUID;
 public class Passenger {
 	private UUID uuid;
 	private String firstName;
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public void setBirthDate(Date birthDate) {
+		this.birthDate = birthDate;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	private String lastName;
 	private Date birthDate;
 	private String email;
