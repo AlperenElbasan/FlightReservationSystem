@@ -3,6 +3,8 @@ package miu;
 import miu.models.FlightInstance;
 import miu.models.Passenger;
 
+import java.util.Scanner;
+
 public class Utility {
     public static void ExampleOuput(String input){
         System.out.println(input);

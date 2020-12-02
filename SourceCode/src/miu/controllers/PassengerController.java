@@ -58,6 +58,7 @@ public class PassengerController {
         List<FlightInstance> flightInstancesFound = new ArrayList<FlightInstance>();
 
         for (FlightInstance flightInstance: StorageHandler.flightInstances){
+
             // comparing dates, departure & arrival airport NAMES
             boolean case1 = flightInstance.getFlightDate().compareTo(date) == 0;
             boolean case2 = flightInstance.getFlight().getDepartureAirport().getName().equals(departureAirportName);
