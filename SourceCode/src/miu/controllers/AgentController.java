@@ -86,7 +86,6 @@ public class AgentController {
         List<FlightInstance> flightInstancesFound = ArrayList<FlightInstance>();
 
         for (FlightInstance flightInstance: StorageHandler.flightInstances){
-            
             // comparing dates, departure & arrival airport NAMES
             boolean case1 = DateUtils.isSameDay(flightInstance.getFlightDate(), date);
             boolean case2 = flightInstance.getFlight().getDepartureAirport().getName() == departureAirportName;
