@@ -28,21 +28,15 @@ public class Passenger {
 	public UUID getUuid() {
 		return uuid;
 	}
-	public String getFirstName() {
-		return firstName;
-	}
+	public String getFirstName() { return firstName; }
 	public String getLastName() {
 		return lastName;
 	}
 	public Date getBirthDate() {
 		return birthDate;
 	}
-	public String getEmail() {
-		return email;
-	}
-	public Address getResidenceAddress() {
-		return residenceAddress;
-	}
+	public String getEmail() { return email;}
+	public Address getResidenceAddress() { return residenceAddress;}
 
 	// reservation part
 	public List<Reservation> getReservation() {

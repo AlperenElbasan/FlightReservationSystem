@@ -11,6 +11,7 @@ public class StorageHandler {
     public static List<Flight> flights = new ArrayList<>();
     public static List<FlightInstance> flightInstances = new ArrayList<>();
     public static List<Passenger> passengers = new ArrayList<>();
+    public static List<Agent> agent = new ArrayList<>();
     public static List<Reservation> reservations = new ArrayList<>();
 
     public static HashMap<String, Reservation> reservationsMap = new HashMap<>();
