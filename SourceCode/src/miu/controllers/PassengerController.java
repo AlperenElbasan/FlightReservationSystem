@@ -15,8 +15,43 @@ public class PassengerController {
     // 	System.out.println("added reservation to passenger...");
     // }
 
-    public void getListAirport(){
-
+    public static void listAirports(){
+    	StorageHandler.createRandomAirports(10);
+		List<Airport> airports = StorageHandler.airports;
+		for (Airport airport: airports)
+			System.out.println(airport);
+		StorageHandler.emptyAirports();
+    }
+    
+    public static void listFlights(String code) {
+    	System.out.println("\n#####\nListing airlines for the code " + code + "\n");
+    	// populate the db...
+    	Airport departureAirport = new Airport(code, code + " Airport", StorageHandler.getRandomAddress());
+    	Airport arrivalAirport = new Airport("WYZ", "WYZ Airport", StorageHandler.getRandomAddress());
+    	
+    	int i = 0;
+    	while (i++ < 5)
+    		new Flight(1, 350, StorageHandler.getRandomAirline(), departureAirport, arrivalAirport, new Date(), new Date());
+    	
+    	
+    	// perform the query
+    	List<Flight> depFlights = departureAirport.getDepartureFlights();
+    	List<Airline> airlines = new ArrayList<>();
+    	System.out.println("First list all the flights\n");
+    	for (Flight depFlight: depFlights) {
+    		Airline depFlightAirline = depFlight.getAirlineOwn();
+    		if (!airlines.contains(depFlightAirline)) {
+    			airlines.add(depFlightAirline);
+    		}
+    		
+    		System.out.println(depFlight);
+    	}
+    	
+    	System.out.println("\nAnd now all the airlines\n");
+    	for (Airline airline: airlines)
+    		System.out.println(airline);
+    	
+    	System.out.println("\nEnd of the listing airlines for the code \n#####\n");
     }
     
     // added by Bayartsogt
@@ -88,14 +123,12 @@ public class PassengerController {
     }
 
     public static void main(String[] args) {
-        //TODO: implement cases of passenger here.
-        Utility.ExampleOuput("Passenger Hello world");
-
+    	// First use-case
+    	listAirports();
+    	// Second use-case
+        listFlights("COH");
         List<FlightInstance> FInstance = StorageHandler.generateListFlightInstance(10);
         Passenger passenger = StorageHandler.getRandomPassenger(2);
-
         Reservation reservation = makeReservation(passenger, FInstance);
-
-
     }
 }
