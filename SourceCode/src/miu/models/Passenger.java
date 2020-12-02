@@ -1,5 +1,6 @@
 package miu.models;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -22,6 +23,7 @@ public class Passenger {
 		this.birthDate = birthDate;
 		this.email = email;
 		this.residenceAddress = residenceAddress;
+		this.reservations = new ArrayList<>();
 	}
 	public UUID getUuid() {
 		return uuid;
