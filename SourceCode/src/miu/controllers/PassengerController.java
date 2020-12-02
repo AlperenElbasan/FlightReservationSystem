@@ -8,16 +8,12 @@ import miu.models.*;
 import java.util.*;
 
 public class PassengerController {
-    public void createReservation(Passenger passenger, List<Ticket> tickets){
-    	Reservation reservation = new Reservation();
-    	passenger.addReservation(reservation);
+    // public void createReservation(Passenger passenger, List<Ticket> tickets){
+    // 	Reservation reservation = new Reservation();
+    // 	passenger.addReservation(reservation);
     	
-    	System.out.println("added reservation to passenger...");
-    }
-
-    public void cancelReservation(){
-
-    }
+    // 	System.out.println("added reservation to passenger...");
+    // }
 
     public static void listAirports(){
     	StorageHandler.createRandomAirports(10);
@@ -58,17 +54,38 @@ public class PassengerController {
     	System.out.println("\nEnd of the listing airlines for the code \n#####\n");
     }
 
-    public void getFlightsOnDate(Date departureAirport, Date arrivalAirport, Date date) {
+    public static List<FlightInstance> getFlightsOnDate(String departureAirportName, String arrivalAirportName, Date date) {
+        
+        List<FlightInstance> flightInstancesFound = ArrayList<FlightInstance>();
 
+        for (FlightInstance flightInstance: StorageHandler.flightInstances){
+            
+            // comparing dates, departure & arrival airport NAMES
+            boolean case1 = DateUtils.isSameDay(flightInstance.getFlightDate(), date);
+            boolean case2 = flightInstance.getFlight().getDepartureAirport().getName() == departureAirportName;
+            boolean case3 = flightInstance.getFlight().getArrivalAirport().getName() == arrivalAirportName;
+
+            if (case1 && case2 && case3){
+                flightInstancesFound.add(flightInstance);
+            }
+        }
+        
+        return flightInstancesFound;
     }
 
-    public List<Reservation> getOwnReservation(Passenger passenger) {
+    public static List<Reservation> getOwnReservation(Passenger passenger) {
     	return passenger.getReservation();
     }
-    
 
-    public List<Reservation> getDetailsOfReservation(Reservation reservation) {
-    	return null;
+    // currently it is just printing
+    public static void getDetailsOfReservation(Reservation reservation) {
+        System.out.println("=================")
+        System.out.println("Agent ID:" + reservation.agent)
+        
+        for (Ticket ticket : reservation.getTickets()){
+            Utility.viewFlightInstanceDetail(ticket.getFlightInstance());
+        }
+        System.out.println("=================")
     }
 
     public static Reservation makeReservation(Passenger passenger, List<FlightInstance> flightInstances) {
