@@ -15,7 +15,7 @@ public class AgentController {
 			System.out.println(airport);
 	}
 
-	public static Reservation createReservation(Agent agent, Passenger passenger, List<FlightInstance> flightInstances) {
+	public Reservation createReservation(Agent agent, Passenger passenger, List<FlightInstance> flightInstances) {
         Reservation reservation = new Reservation(agent.getUuid());
         for (FlightInstance f: flightInstances) {
             Ticket t = new Ticket(
@@ -32,12 +32,12 @@ public class AgentController {
         return reservation;
     }
 
-    public static void cancelReservation(String reservationCode) {
+    public void cancelReservation(String reservationCode) {
         StorageHandler.removeTickets(reservationCode);
         StorageHandler.removeReservation(reservationCode);
     }
 
-    public static void confirmAndPurchase(String reservationCode, Boolean status){
+    public void confirmAndPurchase(String reservationCode, Boolean status){
         if(status) {
             Reservation reservation = StorageHandler.getReservationByCode(reservationCode);
             reservation.confirmed();
@@ -47,16 +47,15 @@ public class AgentController {
         }
     }
 
-    public static void main(String[] args) {
-        Utility.ExampleOuput("AgentController Hello world");
-        listAirports();
-
-        Agent agent = new Agent();
-        agent.addPassenger(StorageHandler.getRandomPassenger(1));
-        agent.addPassenger(StorageHandler.getRandomPassenger(2));
-        List<FlightInstance> flightInstances = StorageHandler.generateListFlightInstance(5);
-
-        Passenger passenger = StorageHandler.getRandomPassenger(2);
-        createReservation(agent, passenger, flightInstances);
-    }
+//    public static void main(String[] args) {
+//        listAirports();
+//
+//        Agent agent = new Agent();
+//        agent.addPassenger(StorageHandler.getRandomPassenger(1));
+//        agent.addPassenger(StorageHandler.getRandomPassenger(2));
+//        List<FlightInstance> flightInstances = StorageHandler.generateListFlightInstance(5);
+//
+//        Passenger passenger = StorageHandler.getRandomPassenger(2);
+//        createReservation(agent, passenger, flightInstances);
+//    }
 }
