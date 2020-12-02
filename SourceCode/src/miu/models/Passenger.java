@@ -8,6 +8,23 @@ import java.util.UUID;
 public class Passenger {
 	private UUID uuid;
 	private String firstName;
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public void setBirthDate(Date birthDate) {
+		this.birthDate = birthDate;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	private String lastName;
 	private Date birthDate;
 	private String email;
@@ -28,21 +45,15 @@ public class Passenger {
 	public UUID getUuid() {
 		return uuid;
 	}
-	public String getFirstName() {
-		return firstName;
-	}
+	public String getFirstName() { return firstName; }
 	public String getLastName() {
 		return lastName;
 	}
 	public Date getBirthDate() {
 		return birthDate;
 	}
-	public String getEmail() {
-		return email;
-	}
-	public Address getResidenceAddress() {
-		return residenceAddress;
-	}
+	public String getEmail() { return email;}
+	public Address getResidenceAddress() { return residenceAddress;}
 
 	// reservation part
 	public List<Reservation> getReservation() {
