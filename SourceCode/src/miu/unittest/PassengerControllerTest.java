@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class PassengerControllerTest {
-    @Test
+	@Test
     void createReservation() {
     }
 
@@ -44,4 +44,5 @@ class PassengerControllerTest {
     @Test
     void confirmAndPurchase() {
     }
+>>>>>>> e3904f4167c8b764d1ca5c057552afe76f6049dd
 }

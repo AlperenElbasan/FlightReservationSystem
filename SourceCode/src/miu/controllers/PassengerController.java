@@ -53,26 +53,35 @@ public class PassengerController {
         System.out.println("=================")
     }
 
-    public static Reservation makeReservation(List<FlightInstance> flightInstances) {
-        Scanner Input = new Scanner(System.in);  // Create a Scanner object
+    public static Reservation makeReservation(Passenger passenger, List<FlightInstance> flightInstances) {
         Reservation reservation = new Reservation();
         for(FlightInstance flightInstance: flightInstances){
             Ticket reservationTicket =
-                    new Ticket(StorageHandler.randomTicketNumber(), StorageHandler.randomReservationCode(), flightInstance);
+                    new Ticket(StorageHandler.randomTicketNumber(),
+                            reservation.getReservationCode(),
+                            flightInstance);
             reservation.addTicket(reservationTicket);
         }
+        passenger.addReservation(reservation);
+
+        StorageHandler.addReservation(reservation);
+        StorageHandler.setTickets(reservation.getReservationCode(), reservation.getTickets());
+
         return reservation;
     }
 
-    public static void cancelReservation(Reservation reservation){
-        reservation.cancel();
+    public static void cancelReservation(String reservationCode){
+        StorageHandler.removeTickets(reservationCode);
+        StorageHandler.removeReservation(reservationCode);
     }
 
-    public static void confirmAndPurchase(Reservation reservation, boolean Status){
-        if(Status){
+    public static void confirmAndPurchase(String reservationCode, Boolean status){
+        if(status) {
+            Reservation reservation = StorageHandler.getReservationByCode(reservationCode);
             reservation.confirmed();
+            StorageHandler.updateReservation(reservation);
         } else {
-            reservation.cancel();
+            cancelReservation(reservationCode);
         }
     }
 
@@ -81,7 +90,9 @@ public class PassengerController {
         Utility.ExampleOuput("Passenger Hello world");
 
         List<FlightInstance> FInstance = StorageHandler.generateListFlightInstance(10);
-        Reservation reservation = makeReservation(FInstance);
+        Passenger passenger = StorageHandler.getRandomPassenger(2);
+
+        Reservation reservation = makeReservation(passenger, FInstance);
 
 
     }
