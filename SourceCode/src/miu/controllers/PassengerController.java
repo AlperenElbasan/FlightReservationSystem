@@ -81,13 +81,13 @@ public class PassengerController {
 
     // currently it is just printing // added by Bayartsogt
     public static void getDetailsOfReservation(Reservation reservation) {
-        System.out.println("=================")
-        System.out.println("Agent ID:" + reservation.agent)
+        System.out.println("=================");
+        System.out.println("Agent ID:" + reservation.agent);
         
         for (Ticket ticket : reservation.getTickets()){
             Utility.viewFlightInstanceDetail(ticket.getFlightInstance());
         }
-        System.out.println("=================")
+        System.out.println("=================");
     }
 
     public static Reservation makeReservation(Passenger passenger, List<FlightInstance> flightInstances) {
