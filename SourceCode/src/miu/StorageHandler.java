@@ -11,6 +11,7 @@ public class StorageHandler {
     public static List<Flight> flights = new ArrayList<>();
     public static List<FlightInstance> flightInstances = new ArrayList<>();
     public static List<Passenger> passengers = new ArrayList<>();
+    public static List<Agent> agent = new ArrayList<>();
     public static List<Reservation> reservations = new ArrayList<>();
 
     public static HashMap<String, Reservation> reservationsMap = new HashMap<>();
@@ -112,8 +113,12 @@ public class StorageHandler {
     }
     
     public static Airport getRandomAirport() {
-    	final String airportCode = (int)(Math.random() * 1000) + "";
+    	final String airportCode = ((int)(Math.random() * 900)+ 100 ) + "";
     	return new Airport(airportCode, "Airport Number " + airportCode, getRandomAddress());
+    }
+    
+    public static Airline getRandomAirline() {
+    	return new Airline((int)(Math.random() * 900) + "", "Turkish Airlines", "Turkish Airlines is established in ...");
     }
 
     public static void createRandomAirports(int amount) {
