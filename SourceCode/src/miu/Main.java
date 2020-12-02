@@ -5,8 +5,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import miu.cases.PassengerCases;
-import miu.controllers.PassengerController;
+import miu.cases.PassengerScreen;
+
+import java.util.Scanner;
 
 public class Main extends Application {
     @Override
@@ -24,7 +25,7 @@ public class Main extends Application {
     }
 
     public static void PassengerHandler(){
-        PassengerCases.makeReservation();
+        PassengerScreen.makeReservation();
     }
 
     public static void AgentHandler(){
@@ -32,11 +33,19 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
         initData();
 
         PassengerHandler();
 
         AgentHandler();
+
+        System.out.println("Who are you?");
+        System.out.println("1. Admin");
+        System.out.println("2. Passenger");
+        System.out.println("3. Agent");
+        int personRole = input.nextInt();
 
 //        launch(args);
     }

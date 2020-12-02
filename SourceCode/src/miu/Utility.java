@@ -2,6 +2,8 @@ package miu;
 
 import miu.models.FlightInstance;
 
+import java.util.Scanner;
+
 public class Utility {
     public static void ExampleOuput(String input){
         System.out.println(input);

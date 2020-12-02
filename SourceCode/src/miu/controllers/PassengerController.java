@@ -5,8 +5,6 @@ import miu.StorageHandler;
 import miu.Utility;
 import miu.models.*;
 
-import java.util.*;
-
 public class PassengerController {
     // public void createReservation(Passenger passenger, List<Ticket> tickets){
     // 	Reservation reservation = new Reservation();
@@ -60,7 +58,7 @@ public class PassengerController {
         List<FlightInstance> flightInstancesFound = ArrayList<FlightInstance>();
 
         for (FlightInstance flightInstance: StorageHandler.flightInstances){
-            
+
             // comparing dates, departure & arrival airport NAMES
             boolean case1 = DateUtils.isSameDay(flightInstance.getFlightDate(), date);
             boolean case2 = flightInstance.getFlight().getDepartureAirport().getName() == departureAirportName;
