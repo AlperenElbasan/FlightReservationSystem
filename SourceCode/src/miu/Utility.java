@@ -1,6 +1,9 @@
 package miu;
 
 import miu.models.FlightInstance;
+import miu.models.Passenger;
+
+import java.util.Scanner;
 
 public class Utility {
     public static void ExampleOuput(String input){
@@ -15,6 +18,15 @@ public class Utility {
                 flightInstance.getFlightDate() + ", " +
                 flightInstance.getFlight().getDepartureTime() + "-->" +
                 flightInstance.getFlight().getArrivalTime());
+        System.out.println("=======================");
+    }
+
+    public static void viewPassengerDetail(Passenger passenger){
+        System.out.println("=======================");
+        System.out.println("FirstName: " + passenger.getFirstName());
+        System.out.println("LastName: " + passenger.getLastName());
+        System.out.println("BirthDate: " + passenger.getBirthDate());
+        System.out.println("Email: " + passenger.getEmail());
         System.out.println("=======================");
     }
 }

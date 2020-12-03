@@ -1,7 +1,8 @@
 package miu.cases;
 
-public class PassengerCases {
+public class PassengerScreen {
     public static void makeReservation(){
         //TODO: show output of reservation here
+
     }
 }

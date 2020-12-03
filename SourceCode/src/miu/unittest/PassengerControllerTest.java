@@ -1,12 +1,21 @@
 package miu.unittest;
 
+import miu.StorageHandler;
+import miu.controllers.PassengerController;
+import miu.models.FlightInstance;
+import miu.models.Passenger;
+import miu.models.Reservation;
 import org.junit.jupiter.api.Test;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class PassengerControllerTest {
+    private final PassengerController passengerController = new PassengerController();
+
 	@Test
     void createReservation() {
+
     }
 
     @Test
@@ -35,6 +44,11 @@ class PassengerControllerTest {
 
     @Test
     void makeReservation() {
+        Passenger passenger = StorageHandler.getRandomPassenger(1);
+        List<FlightInstance> flightInstanceList = StorageHandler.generateListFlightInstance(10);
+
+        Reservation reservation = passengerController.makeReservation(passenger,flightInstanceList);
+
     }
 
     @Test
@@ -44,5 +58,4 @@ class PassengerControllerTest {
     @Test
     void confirmAndPurchase() {
     }
->>>>>>> e3904f4167c8b764d1ca5c057552afe76f6049dd
 }
