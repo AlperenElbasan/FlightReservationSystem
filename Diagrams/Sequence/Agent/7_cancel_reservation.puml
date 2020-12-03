@@ -1,11 +1,13 @@
-@startuml
+@startuml cancel_reservation
 
--> AgentController: cancelReservation(reservation: Reservation)
-activate AgentController
+-> ReservationSystemFacadeImpl: cancelReservation(reservationCode : String) 
+activate ReservationSystemFacadeImpl
 
-AgentController -> Reservation: cancel
-activate Reservation
-Reservation -> Ticket: remove a ticket
-activate Ticket
+ReservationSystemFacadeImpl -> StorageHandler : removeTickets(reservationCode : String)
+activate StorageHandler
+ReservationSystemFacadeImpl -> StorageHandler : removeReservation(reservationCode : String)
+deactivate StorageHandler
+
+deactivate ReservationSystemFacadeImpl
 
 @enduml

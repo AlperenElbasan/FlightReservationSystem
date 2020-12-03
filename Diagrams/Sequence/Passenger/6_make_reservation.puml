@@ -1,16 +1,26 @@
-@startuml
+@startuml passenger_reservation
 
--> PassengerController: MakeAReservation(flights: List<Flight>)
-activate PassengerController
-PassengerController -> Reservation : Initialize
+-> ReservationSystemFacadeImpl: createReservation(passenger:Passenger, flights: List<Flight>)
+activate ReservationSystemFacadeImpl
+ReservationSystemFacadeImpl -> Reservation : Initialize
 activate Reservation
-deactivate Reservation
 
-PassengerController -> Ticket: Create a ticket
+ReservationSystemFacadeImpl -> Reservation: getReservationCode()
+
+ReservationSystemFacadeImpl -> Ticket: Initialize
 activate Ticket
 deactivate Ticket
 
-PassengerController -> Ticket: get Reservation code
-activate Ticket
+ReservationSystemFacadeImpl -> Reservation: addTicket()
+deactivate Reservation
+
+ReservationSystemFacadeImpl -> Passenger: addReservation()
+activate Passenger
+deactivate Passenger
+
+ReservationSystemFacadeImpl -> StorageHandler: addReservation
+activate StorageHandler
+ReservationSystemFacadeImpl -> StorageHandler: setTickets
+deactivate StorageHandler
 
 @enduml

@@ -1,17 +1,24 @@
-@startuml
+@startuml cancel_reservation
 
-->AgentController: confirmAndPurchaseReservation(reservation: Reservation)
+-> ReservationSystemFacadeImpl: confirmReservation(reservationCode : String) 
+activate ReservationSystemFacadeImpl
 
-AgentController -> Reservation: Confirm a reservation
+ReservationSystemFacadeImpl -> StorageHandler : getReservationByCode(reservationCode : String)
+activate StorageHandler
+deactivate StorageHandler
+
+ReservationSystemFacadeImpl -> StorageHandler : getReservationByCode(reservationCode : String)
+activate StorageHandler
+deactivate StorageHandler
+
+ReservationSystemFacadeImpl -> Reservation : confirm()
 activate Reservation
 deactivate Reservation
 
-Reservation -> Reservation: Purchase
-activate Reservation
-deactivate Reservation
+ReservationSystemFacadeImpl -> StorageHandler : updateReservation(reservation : Reservation)
+activate StorageHandler
+deactivate StorageHandler
 
-Reservation -> Ticket: Export Tickets.
-activate Ticket
-deactivate Ticket
+deactivate ReservationSystemFacadeImpl
 
 @enduml
