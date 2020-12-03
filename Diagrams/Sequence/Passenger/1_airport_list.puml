@@ -1,0 +1,12 @@
+@startuml
+Actor Passenger
+
+activate ReservationSystemFacadeImpl
+Passenger -> ReservationSystemFacadeImpl: findAllAirports()
+
+activate StorageHandler
+ReservationSystemFacadeImpl -> StorageHandler: get airports
+StorageHandler --> Passenger: List<Airport> airports
+deactivate StorageHandler
+deactivate ReservationSystemFacadeImpl
+@enduml

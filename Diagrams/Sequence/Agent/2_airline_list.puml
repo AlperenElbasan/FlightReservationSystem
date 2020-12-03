@@ -1,0 +1,23 @@
+@startuml
+Actor Agent
+
+activate ReservationSystemFacadeImpl
+Agent -> ReservationSystemFacadeImpl: findAirlinesByAirportCode(String airportCode)
+
+activate ReservationSystemFacadeImpl
+ReservationSystemFacadeImpl -> ReservationSystemFacadeImpl: findAirportByAirportCode(airportCode)
+deactivate ReservationSystemFacadeImpl
+
+activate Airport
+ReservationSystemFacadeImpl -> Airport: getDepartureFlights()
+Airport --> ReservationSystemFacadeImpl: List<FlightNumber> flightNumbers
+deactivate Airport
+
+activate FlightNumber
+ReservationSystemFacadeImpl -> FlightNumber: getAirlineOwn()
+FlightNumber --> ReservationSystemFacadeImpl: Airline airline
+deactivate FlightNumber
+
+ReservationSystemFacadeImpl --> Agent: List<Airline> airlines
+deactivate ReservationSystemFacadeImpl
+@enduml
