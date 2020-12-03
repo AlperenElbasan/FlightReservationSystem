@@ -3,8 +3,9 @@ Agent -> Airport: Get the list of all airports
 Airport --> Agent: List of Airports
 
 
-Agent -> Airport: Get all flights from this airport
-Airport -> Flight: Get all flights
-
-Flight --> Agent: List of Flights
+Agent -> Airport: Get all airlines flying from this airport
+Airport -> Airport : Get departure flights
+Airport -> FlightNumber: Get the airline of the flight
+FlightNumber --> Airport: Return the airline
+Airport --> Agent: Return all the airlines
 @enduml

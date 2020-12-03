@@ -3,8 +3,9 @@ Passenger -> Airport: Get the list of all airports
 Airport --> Passenger: List of Airports
 
 
-Passenger -> Airport: Get all flights from this airport
-Airport -> Flight: Get all flights
-
-Flight --> Passenger: List of Flights
+Passenger -> Airport: Get all airlines flying from this airport
+Airport -> Airport: Get departure flights
+Airport -> FlightNumber: Get the airline of the flight
+FlightNumber --> Airport: Return the airline
+Airport --> Passenger: Return all the airlines
 @enduml
