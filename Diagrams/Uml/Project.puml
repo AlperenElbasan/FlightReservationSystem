@@ -22,7 +22,7 @@ Class Address{
     Zip : int 
 }
 
-Class Flight{
+Class FlightNumber{
     UUID : long
     Number : int
     Capacity : int
@@ -33,7 +33,7 @@ Class Flight{
     ArrivalTime : DateTime
 }
 
-Class FlightInstance{
+Class Flight{
     UUID : long
     flightDate: Date
     passengers: List<Passenger>
@@ -73,25 +73,25 @@ Class Ticket {
     UUID : long
     Number : String 
     reservationCode : String
-    flightInstance : FlightInstance
+    flightInstance : Flight
 }
 
 Airport "1" *-- "1" Address
-Flight "0..*" --* "1" Airline
-Flight "1"-- FlightInstance
+FlightNumber "0..*" --* "1" Airline
+FlightNumber "1"-- Flight
 Passenger "1" *-- "1" Address
 
 Reservation "0..1" --- "1" Passenger
-Flight "0..*" --- "1..*" Passenger
+FlightNumber "0..*" --- "1..*" Passenger
 Ticket "1..*" --- "1" Reservation
 
-Ticket "1..*" --- "1" FlightInstance
+Ticket "1..*" --- "1" Flight
 
 Agent "0..*" --- "1..*" Passenger
 Reservation "0..1" --- "0..1" Agent
 
-FlightInstance "1..*" --- "0..*" Passenger
+Flight "1..*" --- "0..*" Passenger
 
-Airport "1..2" --o "1..*" Flight
+Airport "1..2" --o "1..*" FlightNumber
 
 @enduml
