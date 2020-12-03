@@ -2,24 +2,25 @@
 Actor Passenger
 
 
-Passenger -> SystemHelper : getFlights(Dapart, Arrival, Date)
-activate SystemHelper
-SystemHelper -> FlightInstance : getAllDeparturesOnDate(Date)
-activate FlightInstance
-FlightInstance -> Address : getAirportName
-activate Address
+Passenger -> ReservationSystemFacadeImpl : findFlightsFromTo(departure:string, arrival:string, date Date)
+activate ReservationSystemFacadeImpl
+ReservationSystemFacadeImpl -> StorageHandler : flights
+activate StorageHandler
+deactivate
+ReservationSystemFacadeImpl -> Flight: getFlightNumber()
+activate Flight
+Flight -> FlightNumber: getArrivalAirport()
+activate FlightNumber
+FlightNumber -> Airport: getName()
+activate Airport
 deactivate
 deactivate
-
-SystemHelper -> FlightInstance : getAllArrivalOnDate(Date)
-activate FlightInstance
-FlightInstance -> Address : getAirportName
-activate Address
+Flight -> FlightNumber: getDepartureAirport(Date)
+activate FlightNumber
+FlightNumber -> Airport: getName()
+activate Airport
 deactivate
-
 deactivate
-SystemHelper -> SystemHelper : compareAndGet(Depart, Arrival, allDeparts, allArrivals)
-activate SystemHelper
 deactivate
 deactivate
 

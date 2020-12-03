@@ -1,8 +1,15 @@
 @startuml ViewReservations
-Actor Passenger
+'Actor Passenger
 
-Passenger -> Passenger: getReservations()
+
+start -> ReservationSystemFacadeImpl : findReservationsByPassengerId()
+activate ReservationSystemFacadeImpl
+ReservationSystemFacadeImpl -> StorageHandler: getPassengers()
+activate StorageHandler
+deactivate
+ReservationSystemFacadeImpl -> Passenger: getUuid()
 activate Passenger
+deactivate
 deactivate
 
 @enduml
